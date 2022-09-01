@@ -1,0 +1,46 @@
+#!/bin/bash
+
+set_prompt () {
+
+    _get_color256 () {
+        echo -ne "\e[38;5;${1}m"
+    }
+
+    local black=240
+    local blue=25
+    local purple=55
+    local silver=251
+    local green=10
+    local gray=245
+    local light_blue=117
+
+    local host_color=""
+    if [[ "$(hostname)" =~ ^black.* ]]; then
+        host_color="$(_get_color256 $black)"
+    elif [[ "$(hostname)" =~ ^blue.* ]]; then
+        host_color="$(_get_color256 $blue)"
+    elif [[ "$(hostname)" =~ ^purple.* ]]; then
+        host_color="$(_get_color256 $purple)"
+    elif [[ "$(hostname)" =~ ^silver.* ]]; then
+        host_color="$(_get_color256 $silver)"
+    else
+        host_color="$(_get_color256 $green)"
+    fi
+
+    local pwd_color="$(_get_color256 $light_blue)"
+    local term_color="$(_get_color256 $gray)"
+
+    local bold="\e[1m"
+    local reset="\[\e[00m\]"
+
+    local host="${host_color}${bold}\h${reset}"
+    local pwd="${pwd_color}${bold}\w${reset}"
+    local term="${term_color}${bold}\$${reset}"
+
+    local prompt="${host} ${pwd} ${term} "
+
+    PS1=$prompt
+}
+
+set_prompt
+unset set_prompt

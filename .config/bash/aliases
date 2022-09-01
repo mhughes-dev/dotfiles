@@ -1,0 +1,114 @@
+#!/bin/bash
+
+# Enable simple aliases for sudo
+# http://www.gnu.org/software/bash/manual/bash.html#Aliases
+alias sudo='sudo '
+alias _='sudo'
+
+alias cp='cp -i'
+alias mv='mv -i'
+alias rm='rm -i'
+alias ln='ln -i'
+
+alias chown='chown --preserve-root'
+alias chmod='chmod --preserve-root'
+alias chgrp='chgrp --preserve-root'
+
+alias mkdir='mkdir -p -v'
+
+alias dotfiles='/usr/bin/git --git-dir=$HOME/.cfg --work-tree=$HOME'
+
+alias trash-empty="trash-empty --trash-dir=$HOME/.local/share/Trash"
+
+# easily rename a bunch of files with vim
+alias qmv='qmv --format=dual-column --options=space'
+
+alias shred='shred --verbose --iterations=5 --zero --remove'
+
+alias tmux='tmux new-session -ADX -s main'
+
+# Readable time for dmesg
+alias dmesg='sudo dmesg -HP'
+
+# Ping defaults to ipv4
+alias ping='ping -4'
+
+alias ss='ss -plunt'
+
+# Reload Bash configs
+alias reload_bash_profile='source ~/.bash_profile'
+
+# Reload the shell
+alias reload_shell="exec $SHELL -l"
+
+# Print each PATH entry on a separate line
+alias path='echo -e "${PATH//:/\\n}"'
+
+## ls
+alias ls='ls -hF --color=auto'
+alias lr='ls -R'                    # recursive ls
+alias ll='ls -l'
+alias la='ll -A'
+alias lx='ll -BX'                   # sort by extension
+alias lz='ll -rS'                   # sort by size
+alias lt='ll -rt'                   # sort by date
+alias lm='la | more'
+
+# use colors
+alias ls="ls -hF --color=auto"
+# list all files colorized in long format
+alias ll="ls -l --group-directories-first"
+alias l='ll'
+# Show hidden files
+alias l.="ls -dlhFG .*"
+alias ls.='l.'
+alias ldot="l."
+# display only files & dir in a v-aling view
+alias l1="ls -1"
+alias ls1='l1'
+# displays all files and directories in detail
+alias la="ll -a"
+alias lsa="la"
+# displays all files and directories in detail (without "." and without "..")
+alias lA="ll -A"
+alias lsA='lA'
+# shows the most recently modified files at the bottom of
+alias lr="ll -rt --group-directories-first"
+alias lsr='lr'
+# sort by file-size
+alias lS="ll -Ssr"
+# list only directories
+alias lsd="ll | grep --color=never '^d'"
+
+# Displays the ports that use the applications
+alias lsport='sudo lsof -i -n -P'
+
+# Free
+alias free='free -m -l -t'
+
+# Get top process eating memory
+alias psmem="ps -o time,ppid,pid,nice,pcpu,pmem,user,exe,comm -A | sort -n -k 6"
+alias psmem5="psmem | tail -5"
+alias psmem10="psmem | tail -10"
+
+# Shows the corresponding process to ...
+alias psx="ps aux | grep "
+
+# Shows the process structure to clearly
+alias pst="pstree -Alpha"
+
+# Shows all your processes
+
+alias psu2="ps -ef | command grep $USER"
+alias psu3="ps -u $USER -U $USER u | less -r"
+
+# shows the complete disk usage to legibly
+alias df='df --human-readable --print-type'
+
+# shows the disk usage of a directory legibly
+alias du='du --human-readable --total --max-depth=1'
+
+
+alias wget='wget --continue --progress=bar --timestamping'
+
+alias ncdu='ncdu -r --color dark'

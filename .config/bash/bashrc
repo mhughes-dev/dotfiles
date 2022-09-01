@@ -1,0 +1,48 @@
+# .bashrc
+
+# Check for interactive
+[[ $- = *i* ]] || return
+
+# Disable control flow
+stty -ixon 
+
+# Shell options
+shopt -s cdspell dirspell extglob cmdhist histappend no_empty_cmd_completion checkwinsize
+shopt -u mailwarn
+
+# History
+export HISTIGNORE="&:ls:ll:bg:fg:exit:clear:cd"
+export HISTCONTROL=ignoredups:erasedups
+export HISTSIZE=10000
+export HISTFILESIZE=20000
+export PROMPT_COMMAND='history -a'
+
+# For less
+export LESS='-F -g -i -M -R -S -w'
+export LESSHISTFILE=-
+export LESS_TERMCAP_mb=$'\e[01;31m'
+export LESS_TERMCAP_md=$'\e[01;31m'
+export LESS_TERMCAP_me=$'\e[0m'
+export LESS_TERMCAP_se=$'\e[0m'
+export LESS_TERMCAP_so=$'\e[01;44;33m'
+export LESS_TERMCAP_ue=$'\e[0m'
+export LESS_TERMCAP_us=$'\e[01;32m'
+
+# GPG
+export GPG_TTY=$(tty)
+gpg-connect-agent updatestartuptty /bye >/dev/null
+
+# Jump between words with ctrl-(left|right)
+bind '"\e[1;5C":forward-word'
+bind '"\e[1;5D":backward-word'
+
+bind -u forward-search-history
+
+eval "$(dircolors -b)"
+
+complete -cf sudo
+
+for config in .aliases .functions .prompt .bashrc."$HOSTNAME"; do
+  [[ -r $HOME/$config ]] && . "$HOME/$config"
+done
+unset config
