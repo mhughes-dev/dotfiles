@@ -1,4 +1,4 @@
-# .bashrc
+# shellcheck disable=SC2148
 
 # Check for interactive
 [[ $- = *i* ]] || return
@@ -42,9 +42,9 @@ eval "$(dircolors -b)"
 
 complete -cf sudo
 
-for config in .bash_aliases .bash_functions .bash_prompt .bashrc."$HOSTNAME"; do
+for config in bash_aliases bash_functions bash_prompt bashrc."$HOSTNAME"; do
   # shellcheck disable=SC1090
-  [[ -r $HOME/$config ]] && . "$HOME/$config"
+  [[ -r $XDG_CONFIG_HOME/bash/$config ]] && . "$XDG_CONFIG_HOME/bash/$config"
 done
 unset config
 

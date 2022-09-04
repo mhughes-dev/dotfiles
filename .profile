@@ -4,7 +4,7 @@ export EDITOR="vim"
 export SUDO_EDITOR="rvim --noplugin"
 export SYSTEMD_EDITOR="vim"
 export PAGER="less"
-export IGNOREEOF="1" # must press ctrl-d 2 times to exit shell
+export IGNOREEOF="1"
 export XDG_CONFIG_HOME="$HOME/.config"
 
 USER_BIN_PATH="$HOME/.local/bin"
