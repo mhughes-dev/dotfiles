@@ -22,7 +22,7 @@ set_prompt () {
     elif [[ "$(hostname)" =~ ^silver.* ]]; then
         host_color="$(get_color256 $silver)"
     else
-        host_color="$(_get_color256 $green)"
+        host_color="$(get_color256 $green)"
     fi
 
     pwd_color="$(get_color256 $light_blue)"
