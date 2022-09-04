@@ -2,36 +2,31 @@
 
 set_prompt () {
 
-    _get_color256 () {
+    get_color256 () {
         echo -ne "\e[38;5;${1}m"
     }
 
-    local black=240
-    local blue=25
-    local purple=55
-    local silver=251
-    local green=10
-    local gray=245
-    local light_blue=117
+    local green=10 blue=25 purple=55 light_blue=117 \
+          black=240 gray=245 silver=251 
 
-    local host_color=""
+    local bold="\e[1m"
+    local reset="\[\e[00m\]"
+    local host_color pwd_color term_color
+
     if [[ "$(hostname)" =~ ^black.* ]]; then
-        host_color="$(_get_color256 $black)"
+        host_color="$(get_color256 $black)"
     elif [[ "$(hostname)" =~ ^blue.* ]]; then
-        host_color="$(_get_color256 $blue)"
+        host_color="$(get_color256 $blue)"
     elif [[ "$(hostname)" =~ ^purple.* ]]; then
-        host_color="$(_get_color256 $purple)"
+        host_color="$(get_color256 $purple)"
     elif [[ "$(hostname)" =~ ^silver.* ]]; then
-        host_color="$(_get_color256 $silver)"
+        host_color="$(get_color256 $silver)"
     else
         host_color="$(_get_color256 $green)"
     fi
 
-    local pwd_color="$(_get_color256 $light_blue)"
-    local term_color="$(_get_color256 $gray)"
-
-    local bold="\e[1m"
-    local reset="\[\e[00m\]"
+    pwd_color="$(get_color256 $light_blue)"
+    term_color="$(get_color256 $gray)"
 
     local host="${host_color}${bold}\h${reset}"
     local pwd="${pwd_color}${bold}\w${reset}"

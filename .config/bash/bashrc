@@ -42,7 +42,9 @@ eval "$(dircolors -b)"
 
 complete -cf sudo
 
-for config in .aliases .functions .prompt .bashrc."$HOSTNAME"; do
+for config in .bash_aliases .bash_functions .bash_prompt .bashrc."$HOSTNAME"; do
+  # shellcheck disable=SC1090
   [[ -r $HOME/$config ]] && . "$HOME/$config"
 done
 unset config
+
