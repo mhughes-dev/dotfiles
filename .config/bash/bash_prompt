@@ -13,13 +13,13 @@ set_prompt () {
     local reset="\[\e[00m\]"
     local host_color pwd_color term_color
 
-    if [[ "$(hostname)" =~ ^black.* ]]; then
+    if [[ "$HOSTNAME" =~ ^black.* ]]; then
         host_color="$(get_color256 $black)"
-    elif [[ "$(hostname)" =~ ^blue.* ]]; then
+    elif [[ "$HOSTNAME" =~ ^blue.* ]]; then
         host_color="$(get_color256 $blue)"
-    elif [[ "$(hostname)" =~ ^purple.* ]]; then
+    elif [[ "$HOSTNAME" =~ ^purple.* ]]; then
         host_color="$(get_color256 $purple)"
-    elif [[ "$(hostname)" =~ ^silver.* ]]; then
+    elif [[ "$HOSTNAME" =~ ^silver.* ]]; then
         host_color="$(get_color256 $silver)"
     else
         host_color="$(get_color256 $green)"
