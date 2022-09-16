@@ -1,6 +1,32 @@
-# .bash_profile
+# bash_profile
 
+export EDITOR="vim"
+export SUDO_EDITOR="rvim --noplugin"
+export SYSTEMD_EDITOR="vim"
+export PAGER="less"
+export PATH="$PATH:$HOME/.local/bin"
+export IGNOREEOF="1"
+export XDG_CONFIG_HOME="$HOME/.config"
+
+# History
+export HISTIGNORE="&:ls:ll:bg:fg:exit:clear:cd"
+export HISTCONTROL=ignoredups:erasedups
+export HISTSIZE=10000
+export HISTFILESIZE=20000
+export PROMPT_COMMAND='history -a'
+
+# Options for less
+export LESS='-F -g -i -M -R -S -w'
+export LESSHISTFILE=-
+export LESS_TERMCAP_mb=$'\e[01;31m'
+export LESS_TERMCAP_md=$'\e[01;31m'
+export LESS_TERMCAP_me=$'\e[0m'
+export LESS_TERMCAP_se=$'\e[0m'
+export LESS_TERMCAP_so=$'\e[01;44;33m'
+export LESS_TERMCAP_ue=$'\e[0m'
+export LESS_TERMCAP_us=$'\e[01;32m'
+
+# Host-specific overrides
 [[ -f ~/.bash_profile.$HOSTNAME ]] && . ~/.bash_profile.$HOSTNAME
 
 [[ -f ~/.bashrc ]] && . ~/.bashrc
-

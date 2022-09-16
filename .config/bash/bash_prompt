@@ -7,11 +7,24 @@ set_prompt () {
     }
 
     local green=10 blue=25 purple=55 light_blue=117 \
-          black=240 gray=245 silver=251 
+          black=240 gray=245 light_gray=251 red=160
 
     local bold="\e[1m"
     local reset="\[\e[00m\]"
-    local host_color pwd_color term_color
+    local host_color pwd_color term_color root_color
+
+    pwd_color="$(get_color256 $light_blue)"
+    term_color="$(get_color256 $light_gray)"
+
+    if [[ $EUID -eq 0 ]]; then
+        root_color="$(get_color256 $red)"
+        local host="${root_color}${bold}\u@\h${reset}"
+        local pwd="${pwd_color}${bold}\w${reset}"
+        local term="${term_color}${bold}\$${reset}"
+        local prompt="${host} ${pwd} ${term} "
+        PS1=$prompt
+        exit 0
+    fi
 
     if [[ "$HOSTNAME" =~ ^black.* ]]; then
         host_color="$(get_color256 $black)"
@@ -20,7 +33,7 @@ set_prompt () {
     elif [[ "$HOSTNAME" =~ ^purple.* ]]; then
         host_color="$(get_color256 $purple)"
     elif [[ "$HOSTNAME" =~ ^silver.* ]]; then
-        host_color="$(get_color256 $silver)"
+        host_color="$(get_color256 $light_gray)"
     else
         host_color="$(get_color256 $green)"
     fi

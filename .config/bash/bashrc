@@ -1,3 +1,4 @@
+# bashrc
 # shellcheck disable=SC2148
 
 # Check for interactive
@@ -9,24 +10,6 @@ stty -ixon
 # Shell options
 shopt -s cdspell dirspell extglob cmdhist histappend no_empty_cmd_completion checkwinsize
 shopt -u mailwarn
-
-# History
-export HISTIGNORE="&:ls:ll:bg:fg:exit:clear:cd"
-export HISTCONTROL=ignoredups:erasedups
-export HISTSIZE=10000
-export HISTFILESIZE=20000
-export PROMPT_COMMAND='history -a'
-
-# For less
-export LESS='-F -g -i -M -R -S -w'
-export LESSHISTFILE=-
-export LESS_TERMCAP_mb=$'\e[01;31m'
-export LESS_TERMCAP_md=$'\e[01;31m'
-export LESS_TERMCAP_me=$'\e[0m'
-export LESS_TERMCAP_se=$'\e[0m'
-export LESS_TERMCAP_so=$'\e[01;44;33m'
-export LESS_TERMCAP_ue=$'\e[0m'
-export LESS_TERMCAP_us=$'\e[01;32m'
 
 # GPG
 export GPG_TTY=$(tty)
@@ -47,4 +30,3 @@ for config in bash_aliases bash_functions bash_prompt bashrc."$HOSTNAME"; do
   [[ -r $XDG_CONFIG_HOME/bash/$config ]] && . "$XDG_CONFIG_HOME/bash/$config"
 done
 unset config
-
