@@ -1,5 +1,4 @@
 # bashrc
-# shellcheck disable=SC2148
 
 # Check for interactive
 [[ $- = *i* ]] || return
@@ -8,7 +7,7 @@
 stty -ixon 
 
 # Shell options
-shopt -s cdspell dirspell extglob cmdhist histappend no_empty_cmd_completion checkwinsize
+shopt -s cdspell dirspell extglob histappend checkwinsize
 shopt -u mailwarn
 
 # GPG

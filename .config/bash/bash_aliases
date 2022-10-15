@@ -1,9 +1,4 @@
-#!/bin/bash
-
-# Enable simple aliases for sudo
-# http://www.gnu.org/software/bash/manual/bash.html#Aliases
-alias sudo='sudo '
-alias _='sudo'
+# bash aliases
 
 alias cp='cp -i'
 alias mv='mv -i'
@@ -16,99 +11,59 @@ alias chgrp='chgrp --preserve-root'
 
 alias mkdir='mkdir -p -v'
 
-alias dotfiles='/usr/bin/git --git-dir=$HOME/.cfg --work-tree=$HOME'
+alias h='history'
+alias hgrep='history | grep '
 
-alias trash-empty="trash-empty --trash-dir=$HOME/.local/share/Trash"
+alias ls='ls -hF --color=auto'
+alias ll='ls -l --group-directories-first'
+alias la='ll -A'
 
-# easily rename a bunch of files with vim
-alias qmv='qmv --format=dual-column --options=space'
+alias l1='ls -1'
+alias l.='ll -d .*'
 
-alias shred='shred --verbose --iterations=5 --zero --remove'
+alias lsd="ll | grep --color=never '^d'"        # only directories
+alias lsr='ll -rt --group-directories-first'    # sort by date
+alias lss='ll -Ssr'                             # sort by size
+alias lst='tree -Csuh'                          # alternative to ls -R
 
-alias tmux='tmux new-session -ADX -s main'
+alias path='echo -e ${PATH//:/\\n}'                 # pretty print path
+alias libpath='echo -e ${LD_LIBRARY_PATH//:/\\n}'   # pretty print lib path
 
-# Readable time for dmesg
 alias dmesg='sudo dmesg -HP'
 
-# Ping defaults to ipv4
+alias df='df --human-readable --print-type'
+alias du='du --human-readable --total --max-depth=1'
+
 alias ping='ping -4'
 
 alias ss='ss -plunt'
-
-# Reload Bash configs
-alias reload_bash_profile='source ~/.bash_profile'
-
-# Reload the shell
-alias reload_shell="exec $SHELL -l"
-
-# Print each PATH entry on a separate line
-alias path='echo -e "${PATH//:/\\n}"'
-
-## ls
-alias ls='ls -hF --color=auto'
-alias lr='ls -R'                    # recursive ls
-alias ll='ls -l'
-alias la='ll -A'
-alias lx='ll -BX'                   # sort by extension
-alias lz='ll -rS'                   # sort by size
-alias lt='ll -rt'                   # sort by date
-alias lm='la | more'
-
-# use colors
-alias ls="ls -hF --color=auto"
-# list all files colorized in long format
-alias ll="ls -l --group-directories-first"
-alias l='ll'
-# Show hidden files
-alias l.="ls -dlhFG .*"
-alias ls.='l.'
-alias ldot="l."
-# display only files & dir in a v-aling view
-alias l1="ls -1"
-alias ls1='l1'
-# displays all files and directories in detail
-alias la="ll -a"
-alias lsa="la"
-# displays all files and directories in detail (without "." and without "..")
-alias lA="ll -A"
-alias lsA='lA'
-# shows the most recently modified files at the bottom of
-alias lr="ll -rt --group-directories-first"
-alias lsr='lr'
-# sort by file-size
-alias lS="ll -Ssr"
-# list only directories
-alias lsd="ll | grep --color=never '^d'"
-
-# Displays the ports that use the applications
 alias lsport='sudo lsof -i -n -P'
 
-# Free
-alias free='free -m -l -t'
+alias tmux='tmux new-session -ADX -s main'
 
-# Get top process eating memory
-alias psmem="ps -o time,ppid,pid,nice,pcpu,pmem,user,exe,comm -A | sort -n -k 6"
-alias psmem5="psmem | tail -5"
-alias psmem10="psmem | tail -10"
+alias dotfiles='/usr/bin/git --git-dir=$HOME/.cfg --work-tree=$HOME'
 
-# Shows the corresponding process to ...
-alias psx="ps aux | grep "
+alias trash-empty='trash-empty --trash-dir=$HOME/.local/share/Trash'
 
-# Shows the process structure to clearly
-alias pst="pstree -Alpha"
-
-# Shows all your processes
-
-alias psu2="ps -ef | command grep $USER"
-alias psu3="ps -u $USER -U $USER u | less -r"
-
-# shows the complete disk usage to legibly
-alias df='df --human-readable --print-type'
-
-# shows the disk usage of a directory legibly
-alias du='du --human-readable --total --max-depth=1'
-
+alias shred='shred --verbose --iterations=5 --zero --remove'
 
 alias wget='wget --continue --progress=bar --timestamping'
 
-alias ncdu='ncdu -r --color dark'
+alias qmv='qmv --format=dual-column --options=space'
+alias batch-rename='qmv'
+
+alias reload-config='source ~/.bash_profile'
+alias reload-shell='exec bash -l'
+
+# Shorthand, customise docker-compose.yaml location as needed
+alias dcp='docker-compose -f ~/docker-compose.yml '
+alias dcomp='dcp'
+
+# Tail last 50 lines of docker logs
+alias dtail='docker logs -tf --tail='50' '
+
+# Remove unused images (useful after an upgrade)
+alias dprune='docker image prune'
+
+# Remove unused images, unused networks *and data* (use with care)
+alias dprunesys='docker system prune --all'

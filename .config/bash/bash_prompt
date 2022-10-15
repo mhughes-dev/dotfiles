@@ -1,4 +1,4 @@
-#!/bin/bash
+# bash prompt
 
 set_prompt () {
 
