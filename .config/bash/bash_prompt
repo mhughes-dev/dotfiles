@@ -1,53 +1,40 @@
 # bash prompt
+# shellcheck shell=bash
 
 set_prompt () {
+    local black blue green purple red silver white
+    black="\[$(tput setaf 240)\]"
+    blue="\[$(tput setaf 25)\]"
+    green="\[$(tput setaf 10)\]"
+    purple="\[$(tput setaf 55)\]"
+    red="\[$(tput setaf 160)\]"
+    silver="\[$(tput setaf 251)\]"
+    white="\[$(tput setaf 15)\]"
 
-    get_color256 () {
-        echo -ne "\e[38;5;${1}m"
-    }
+    local pwd term
+    pwd="\[$(tput setaf 117)\]"
+    term="\[$(tput setaf 245)\]"
 
-    local green=10 blue=25 purple=55 light_blue=117 \
-          black=240 gray=245 light_gray=251 red=160
+    local bold rest
+    bold="\[$(tput bold)\]"
+    reset="\[$(tput sgr0)\]"
 
-    local bold="\e[1m"
-    local reset="\[\e[00m\]"
-    local host_color pwd_color term_color root_color
-
-    pwd_color="$(get_color256 $light_blue)"
-    term_color="$(get_color256 $light_gray)"
+    local host="${green}"
+    if [[ "$HOSTNAME" =~ ^black.* ]]; then
+        host="${black}"
+    elif [[ "$HOSTNAME" =~ ^blue.* ]]; then
+        host="${blue}"
+    elif [[ "$HOSTNAME" =~ ^purple.* ]]; then
+        host="${purple}"
+    elif [[ "$HOSTNAME" =~ ^silver.* ]]; then
+        host="${silver}"
+    fi
 
     if [[ $EUID -eq 0 ]]; then
-        root_color="$(get_color256 $red)"
-        local host="${root_color}${bold}\u@\h${reset}"
-        local pwd="${pwd_color}${bold}\w${reset}"
-        local term="${term_color}${bold}\$${reset}"
-        local prompt="${host} ${pwd} ${term} "
-        PS1=$prompt
-        exit 0
-    fi
-
-    if [[ "$HOSTNAME" =~ ^black.* ]]; then
-        host_color="$(get_color256 $black)"
-    elif [[ "$HOSTNAME" =~ ^blue.* ]]; then
-        host_color="$(get_color256 $blue)"
-    elif [[ "$HOSTNAME" =~ ^purple.* ]]; then
-        host_color="$(get_color256 $purple)"
-    elif [[ "$HOSTNAME" =~ ^silver.* ]]; then
-        host_color="$(get_color256 $light_gray)"
+        PS1="${bold}${red}u${white}@${host}\h ${pwd}\w ${term}\$${reset} "
     else
-        host_color="$(get_color256 $green)"
+        PS1="${bold}${host}\h ${pwd}\w ${term}\$${reset} "
     fi
-
-    pwd_color="$(get_color256 $light_blue)"
-    term_color="$(get_color256 $gray)"
-
-    local host="${host_color}${bold}\h${reset}"
-    local pwd="${pwd_color}${bold}\w${reset}"
-    local term="${term_color}${bold}\$${reset}"
-
-    local prompt="${host} ${pwd} ${term} "
-
-    PS1=$prompt
 }
 
 set_prompt
