@@ -1,5 +1,8 @@
 # bash aliases
 
+alias sudo='sudo -v; sudo '
+alias su='su -l'
+
 alias cp='cp -i'
 alias mv='mv -i'
 alias rm='rm -i'
