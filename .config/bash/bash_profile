@@ -1,21 +1,19 @@
 # bash_profile
+# shellcheck shell=bash
+# shellcheck disable=SC1090,SC1091
 
 export EDITOR='vim'
 export SUDO_EDITOR='rvim --noplugin'
 export SYSTEMD_EDITOR='vim'
 export PAGER='less'
-export PATH="$PATH:$HOME/.local/bin"
+export PATH="${PATH}:${HOME}/.local/bin"
 export IGNOREEOF='1'
-#export XDG_CONFIG_HOME="$HOME/.config"
 
 export HISTIGNORE="&:ls:ll:bg:fg:exit:clear:cd"
 export HISTCONTROL=ignoredups:erasedups
 export HISTSIZE=10000
 export HISTFILESIZE=20000
 export PROMPT_COMMAND='history -a'
-
-export LESS='-i -N -w  -z-4 -g -e -M -X -F -R -P%t?f%f :stdin .?pb%pb\%:?lbLine %lb:?bbByte %bb:-...'
-#export LESS='-F -g -i -M -R -S -w'
 export LESSHISTFILE=-
 
 # LESS man page colors
@@ -26,6 +24,13 @@ export LESS_TERMCAP_se=$'\e[0m'
 export LESS_TERMCAP_so=$'\e[01;44;33m'
 export LESS_TERMCAP_ue=$'\e[0m'
 
-[[ -f ~/.bash_profile.$HOSTNAME ]] && . ~/.bash_profile.$HOSTNAME
+export SSH_AGENT_PID=""
+export SSH_AUTH_SOCK="${XDG_RUNTIME_DIR}/gnupg/S.gpg-agent.ssh"
 
-[[ -f ~/.bashrc ]] && . ~/.bashrc
+if [[ -r "${HOME}/.bash_profile.${HOSTNAME}" ]]; then
+  . "${HOME}/.bash_profile.${HOSTNAME}"
+fi
+
+if [[ -r "${HOME}/.bashrc" ]]; then
+  . "$HOME/.bashrc"
+fi
