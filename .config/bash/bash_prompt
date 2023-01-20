@@ -12,8 +12,8 @@ set_prompt () {
     white="\[$(tput setaf 15)\]"
 
     local pwd term
-    pwd="\[$(tput setaf 117)\]"
-    term="\[$(tput setaf 245)\]"
+    pwd="\[$(tput setaf 4)\]"
+    term="\[$(tput setaf 8)\]"
 
     local bold rest
     bold="\[$(tput bold)\]"
