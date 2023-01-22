@@ -1,0 +1,7 @@
+$include /etc/inputrc
+
+set show-all-if-ambiguous On
+set colored-stats On
+set visible-stats On
+set page-completions Off
+set completion-query-items -1
