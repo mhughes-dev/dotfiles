@@ -1,4 +1,5 @@
 # bash aliases
+# shellcheck shell=bash
 
 alias sudo='sudo -v; sudo '
 alias su='su -l'
@@ -18,7 +19,7 @@ alias h='history'
 alias hgrep='history | grep '
 
 alias ls='ls -hF --color=auto'
-alias ll='ls -l --group-directories-first'
+alias ll='ls --group-directories-first -l'
 alias la='ll -A'
 
 alias l1='ls -1'
@@ -58,10 +59,7 @@ alias batch-rename='qmv'
 alias reload-config='source ~/.bash_profile'
 alias reload-shell='exec bash -l'
 
-alias pcup='podman-compose -f ~/docker-compose.yml up -d'
-alias pcdown='podman-compose -f ~/docker-compose.yml down'
-alias pcstop='podman-compose -f ~/docker-compose.yml stop'
-alias pcpull='podman-compose -f ~/docker-compose.yml pull'
-alias pclogs='podman-compose -f ~/docker-compose.yml logs -tf --tail="50" '
-alias pmlogs='podman logs -tf --tail="50" "$@"'
-alias pmprune='podman image prune'
+if [[ -r "/usr/share/bash-complete-alias/complete_alias" ]]; then
+  . "/usr/share/bash-complete-alias/complete_alias"
+  complete -F _complete_alias "${!BASH_ALIASES[@]}"
+fi

@@ -1,18 +1,25 @@
 # bashrc
+# shellcheck shell=bash
+# shellcheck disable=SC1090,SC1091
 
 # Check for interactive
 [[ $- = *i* ]] || return
 
 # Disable control flow
-stty -ixon 
+stty -ixon
 
 # Shell options
 shopt -s cdspell dirspell extglob histappend checkwinsize
 shopt -u mailwarn
 
-# GPG
-export GPG_TTY=$(tty)
-gpg-connect-agent updatestartuptty /bye >/dev/null
+# Configure pinentry to use the correct TTY
+GPG_TTY=$(tty)
+export GPG_TTY
+gpg-connect-agent updatestartuptty /bye > /dev/null
+
+# Use gpg-agent instead of ssh-agent
+export SSH_AGENT_PID=""
+export SSH_AUTH_SOCK="${XDG_RUNTIME_DIR}/gnupg/S.gpg-agent.ssh"
 
 # Jump between words with ctrl-(left|right)
 bind '"\e[1;5C":forward-word'
@@ -22,10 +29,18 @@ bind -u forward-search-history
 
 eval "$(dircolors -b)"
 
-complete -cf sudo
+if [[ -r "${XDG_CONFIG_HOME}/bash/bash_aliases" ]]; then
+ . "${XDG_CONFIG_HOME}/bash/bash_aliases"
+fi
 
-for config in bash_aliases bash_functions bash_prompt bashrc."$HOSTNAME"; do
-  # shellcheck disable=SC1090
-  [[ -r $XDG_CONFIG_HOME/bash/$config ]] && . "$XDG_CONFIG_HOME/bash/$config"
-done
-unset config
+if [[ -r "${XDG_CONFIG_HOME}/bash/bash_functions" ]]; then
+ . "${XDG_CONFIG_HOME}/bash/bash_functions"
+fi
+
+if [[ -r "${XDG_CONFIG_HOME}/bash/bash_prompt" ]]; then
+ . "${XDG_CONFIG_HOME}/bash/bash_prompt"
+fi
+
+if [[ -r "${XDG_CONFIG_HOME}/bash/bashrc.${HOSTNAME}" ]]; then
+ . "${XDG_CONFIG_HOME}/bash/bashrc.${HOSTNAME}"
+fi
