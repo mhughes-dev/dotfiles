@@ -56,6 +56,8 @@ alias wget='wget --continue --progress=bar --timestamping'
 alias qmv='qmv --format=dual-column --options=space'
 alias batch-rename='qmv'
 
+alias printenv='printenv | sort'
+
 alias reload-config='source ~/.bash_profile'
 alias reload-shell='exec bash -l'
 
