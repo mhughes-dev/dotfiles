@@ -1,0 +1,24 @@
+# Define the monitor each workspace should load on
+workspace $ws1 output $monitor1
+workspace $ws2 output $monitor1
+workspace $ws3 output $monitor1
+workspace $ws4 output $monitor1
+workspace $ws5 output $monitor1
+workspace $ws6 output $monitor1
+workspace $ws7 output $monitor1
+workspace $ws8 output $monitor1
+workspace $ws9 output $monitor1
+workspace $ws10 output $monitor1
+workspace $ws11 output $monitor2
+workspace $ws12 output $monitor2
+workspace $ws13 output $monitor2
+workspace $ws14 output $monitor2
+workspace $ws15 output $monitor2
+workspace $ws16 output $monitor2
+workspace $ws17 output $monitor2
+workspace $ws18 output $monitor2
+workspace $ws19 output $monitor2
+workspace $ws20 output $monitor2
+
+# Monitor orientation
+exec --no-startup-id xrandr --output $monitor1 --auto --left-of $monitor2 --primary
