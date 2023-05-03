@@ -35,8 +35,9 @@ floating_maximum_size -1 x -1
 
 for_window [class="floating_window"] floating enable
 for_window [class="(?i)copyq"] floating enable
-for_window [class="(?i)mpv"] floating enable
+for_window [class="(?i)galculator"] floating enable
 for_window [class="(?i)keepassxc"] floating enable
-for_window [class="(?i)ulauncher"] floating enable
-for_window [class="(?i)minecraft*"] floating enable, resize set 1280 720
+for_window [class="(?i)minecraft"] floating enable, resize set 1280 720
+for_window [class="(?i)mpv"] floating enable, move to workspace $ws11
 for_window [class="(?i)prismlauncher"] floating enable, resize set 1280 720
+for_window [class="(?i)ulauncher"] floating enable

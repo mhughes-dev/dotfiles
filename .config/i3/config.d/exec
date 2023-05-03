@@ -3,13 +3,13 @@ exec --no-startup-id betterlockscreen -u $HOME/.config/background.png
 exec --no-startup-id xss-lock --transfer-sleep-lock -- betterlockscreen -l dimblur
 
 # Wallpaper
-exec_always feh --no-fehbg --bg-center $HOME/.config/background.png
+exec_always --no-startup-id feh --no-fehbg --bg-center $HOME/.config/background.png
 
 # Status Bar
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 # Compositor
-exec_always --no-startup-id picom
+exec_always --no-startup-id picom -b
 
 # Notifications
 exec_always --no-startup-id dunst
@@ -23,5 +23,8 @@ exec --no-startup-id copyq
 # Hide the mouse pointer if unused for a duration
 exec --no-startup-id unclutter -b
 
-# Alt-Tab-like window switching
-exec_always --no-startup-id ./scripts/i3-cycle-focus.py --history 2
+# Automatically switch container orientation
+exec_always --no-startup-id autotiling
+
+# Redshift
+exec --no-startup-id redshift

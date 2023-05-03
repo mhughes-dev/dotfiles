@@ -11,7 +11,6 @@ bindsym $mod+Shift+x xkill
 # Middle mouse button and a modifier kills the window
 bindsym --whole-window $mod+button2 kill
 
-
 # Vim-like keybinds
 bindsym $mod+h focus left
 bindsym $mod+j focus down
@@ -149,7 +148,9 @@ bindsym Print exec flameshot gui
 bindsym Ctrl+$alt+l exec betterlockscreen -l dimblur
 
 # Alt-Tab-like window switching
-bindsym $alt+Tab exec --no-startup-id ./scripts/i3-cycle-focus.py --switch
+exec_always --no-startup-id $HOME/.config/i3/scripts/i3-cycle-focus.py --history 2
+bindsym $mod+Tab exec --no-startup-id $HOME/.config/i3/scripts/i3-cycle-focus.py --switch
+bindsym $alt+Tab exec --no-startup-id $HOME/.config/i3/scripts/i3-cycle-focus.py --switch
 
 # Terminal scratchpad
 exec_always alacritty --class quickterm --option window.dimensions.columns=120 --option window.dimensions.lines=70
