@@ -26,6 +26,24 @@ mvr () {
     rsync --archive -hh --partial --info=stats1,progress2 --modify-window=1 --remove-source-files "$@"
 }
 
+easyeffects_toggle () {
+    if pgrep -x "easyeffects" > /dev/null; then
+      bypass_status=$(easyeffects -b 3)
+
+      if [ "$bypass_status" == "0" ]; then
+        # It's off, so turn it on.
+        easyeffects -b 1
+        notify-send "EasyEffects bypass ON"
+      else
+        # It's on, so turn it off.
+        easyeffects -b 2
+        notify-send "EasyEffects bypass OFF"
+      fi
+    else
+      notify-send "EasyEffects is not running!"
+    fi
+}
+
 bgcolors () {
     for C in {0..255}; do
         tput setab $C
