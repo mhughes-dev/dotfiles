@@ -23,8 +23,5 @@ exec --no-startup-id copyq
 # Hide the mouse pointer if unused for a duration
 exec --no-startup-id unclutter -b
 
-# Automatically switch container orientation
-exec_always --no-startup-id autotiling
-
 # Redshift
 exec --no-startup-id redshift
