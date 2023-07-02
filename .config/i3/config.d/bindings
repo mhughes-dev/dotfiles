@@ -147,6 +147,9 @@ bindsym Print exec flameshot gui
 # Lock screen
 bindsym Ctrl+$alt+l exec betterlockscreen -l dimblur
 
+# Diable frequently typoed key combo
+bindsym Ctrl+q nop
+
 # Alt-Tab-like window switching
 exec_always --no-startup-id $HOME/.config/i3/scripts/i3-cycle-focus.py --history 2
 bindsym $mod+Tab exec --no-startup-id $HOME/.config/i3/scripts/i3-cycle-focus.py --switch
