@@ -41,3 +41,5 @@ for_window [class="(?i)minecraft"] floating enable, resize set 1280 720
 for_window [class="(?i)mpv"] floating enable, move to workspace $ws11
 for_window [class="(?i)prismlauncher"] floating enable, resize set 1280 720
 for_window [class="(?i)ulauncher"] floating enable
+for_window [class="(?i)feh"] floating enable
+for_window [class="(?i)org.remmina.remmina"] floating enable

@@ -43,9 +43,16 @@ bindsym $mod+Shift+f floating toggle
 bindsym $mod+a focus parent
 bindsym $mod+z focus child
 
-bindsym $mod+m move to scratchpad
+bindsym $mod+m show scratchpad
+bindsym $mod+Shift+m move to scratchpad
 
 bindsym $mod+w [urgent=latest] focus
+
+# Switch to right/left workspace
+bindsym $mod+$alt+Right workspace next
+bindsym $mod+$alt+Left workspace prev
+bindsym Ctrl+$alt+Right workspace next
+bindsym Ctrl+$alt+Left workspace prev
 
 # Switch to workspace
 bindsym $mod+1 workspace number $ws1
@@ -156,9 +163,9 @@ bindsym $mod+Tab exec --no-startup-id $HOME/.config/i3/scripts/i3-cycle-focus.py
 bindsym $alt+Tab exec --no-startup-id $HOME/.config/i3/scripts/i3-cycle-focus.py --switch
 
 # Terminal scratchpad
-exec_always alacritty --class quickterm --option window.dimensions.columns=120 --option window.dimensions.lines=70
 for_window [instance="quickterm"] floating enable
 for_window [instance="quickterm"] move scratchpad; move position center
+exec_always alacritty --class quickterm --option window.dimensions.columns=120 --option window.dimensions.lines=70
 bindsym Ctrl+grave [instance="quickterm"] scratchpad show
 
 # Password manager scratchpad
