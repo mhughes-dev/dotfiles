@@ -9,7 +9,7 @@ export PAGER="less"
 export PATH="${PATH}:${HOME}/.local/bin"
 export IGNOREEOF=1
 
-export HISTIGNORE="&:ls:ll:bg:fg:exit:clear:cd"
+export HISTIGNORE="&:ls:ll:bg:fg:exit:clear"
 export HISTCONTROL="erasedups:ignorespace"
 export HISTSIZE=1000
 export HISTFILESIZE=2000
