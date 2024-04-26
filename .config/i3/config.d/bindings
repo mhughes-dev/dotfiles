@@ -43,8 +43,8 @@ bindsym $mod+Shift+f floating toggle
 bindsym $mod+a focus parent
 bindsym $mod+z focus child
 
-bindsym $mod+m show scratchpad
-bindsym $mod+Shift+m move to scratchpad
+# bindsym $mod+m show scratchpad
+# bindsym $mod+Shift+m move to scratchpad
 
 bindsym $mod+w [urgent=latest] focus
 
@@ -173,3 +173,9 @@ exec_always keepassxc
 for_window [class="(?i)keepassxc"] floating enable
 for_window [class="(?i)keepassxc"] move scratchpad; move position center
 bindsym $mod+grave [class="(?i)keepassxc"] scratchpad show
+
+# Chat/messengers scratchpad
+# exec_always telegram-desktop
+# for_window [class="(?telegramdesktop)"] floating enable
+# for_window [class="(?i)telegramdesktop"] move scratchpad; move position center
+# bindsym $mod+m [class="(?i)telegramdesktop"] scratchpad show
