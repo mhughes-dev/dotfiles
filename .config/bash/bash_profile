@@ -10,7 +10,7 @@ export PATH="${PATH}:${HOME}/.local/bin"
 export IGNOREEOF=1
 
 export HISTIGNORE="&:ls:ll:bg:fg:exit:clear"
-export HISTCONTROL="erasedups:ignorespace"
+export HISTCONTROL="ignoreboth:erasedups"
 export HISTSIZE=1000
 export HISTFILESIZE=2000
 export PROMPT_COMMAND="history -a"

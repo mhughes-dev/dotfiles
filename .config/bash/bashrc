@@ -9,8 +9,7 @@
 stty -ixon
 
 # Shell options
-shopt -s cdspell dirspell extglob histappend checkwinsize
-shopt -u mailwarn
+shopt -s cdspell dirspell extglob histappend histverify checkwinsize
 
 # Configure pinentry to use the correct TTY
 GPG_TTY=$(tty)
