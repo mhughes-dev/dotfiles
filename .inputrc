@@ -5,3 +5,7 @@ set colored-stats On
 set visible-stats On
 set page-completions Off
 set completion-query-items -1
+set mark-modified-lines Off
+set mark-symlinked-directories On
+set colored-completion-prefix On
+set menu-complete-display-prefix On
