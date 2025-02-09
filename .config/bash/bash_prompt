@@ -15,7 +15,7 @@ set_prompt () {
     pwd="\[$(tput setaf 4)\]"
     term="\[$(tput setaf 7)\]"
 
-    local bold rest
+    local bold reset
     bold="\[$(tput bold)\]"
     reset="\[$(tput sgr0)\]"
 
@@ -33,7 +33,8 @@ set_prompt () {
     if [[ $EUID -eq 0 ]]; then
         PS1="${bold}${red}u${white}@${host}\h ${pwd}\w ${term}\#${reset} "
     else
-        PS1="${bold}${host}\h ${pwd}\w ${reset}${term}\$${reset} "
+        #PS1="${bold}${host}\h ${pwd}\w ${reset}${term}\$${reset} "
+        PS1="${bold}${host}\h ${pwd}\w${reset} \$ "
     fi
 }
 

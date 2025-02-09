@@ -9,10 +9,10 @@ export PAGER="less"
 export PATH="${PATH}:${HOME}/.local/bin"
 export IGNOREEOF=1
 
-export HISTIGNORE="&:ls:ll:bg:fg:exit:clear"
+export HISTIGNORE="&:ls:ll:bg:fg:exit:clear:history"
 export HISTCONTROL="ignoreboth:erasedups"
-export HISTSIZE=1000
-export HISTFILESIZE=2000
+export HISTSIZE=10000
+export HISTFILESIZE=20000
 export PROMPT_COMMAND="history -a"
 export LESSHISTFILE=-
 
