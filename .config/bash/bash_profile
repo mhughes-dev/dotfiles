@@ -9,11 +9,12 @@ export PAGER="less"
 export PATH="${PATH}:${HOME}/.local/bin"
 export IGNOREEOF=1
 
-export HISTIGNORE="&:ls:ll:bg:fg:exit:clear:history"
-export HISTCONTROL="ignoreboth:erasedups"
-export HISTSIZE=10000
-export HISTFILESIZE=20000
-export PROMPT_COMMAND="history -a"
+shopt -s histappend
+#export HISTIGNORE="&:ls:ll:bg:fg:exit:clear:history"
+export HISTCONTROL=ignoreboth
+export HISTSIZE=32768
+export HISTFILESIZE="${HISTSIZE}"
+#export PROMPT_COMMAND="history -a"
 export LESSHISTFILE=-
 
 # LESS man page colors

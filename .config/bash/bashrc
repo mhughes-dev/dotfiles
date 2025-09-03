@@ -9,7 +9,7 @@
 stty -ixon
 
 # Shell options
-shopt -s cdspell dirspell extglob histappend histverify checkwinsize
+shopt -s histappend
 
 # Configure pinentry to use the correct TTY
 GPG_TTY=$(tty)
@@ -43,3 +43,8 @@ fi
 if [[ -r "${XDG_CONFIG_HOME}/bash/bashrc.${HOSTNAME}" ]]; then
  . "${XDG_CONFIG_HOME}/bash/bashrc.${HOSTNAME}"
 fi
+
+export XDG_CURRENT_DESKTOP=scroll
+export GDK_BACKEND=wayland,x11,*
+export SDL_VIDEODRIVER=wayland
+export CLUTTER_BACKEND=wayland
