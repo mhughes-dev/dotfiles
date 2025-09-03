@@ -1,5 +1,9 @@
 $include /etc/inputrc
 
+$if Bash
+  Space: magic-space
+$endif
+
 set show-all-if-ambiguous On
 set colored-stats On
 set visible-stats On
@@ -9,3 +13,4 @@ set mark-modified-lines Off
 set mark-symlinked-directories On
 set colored-completion-prefix On
 set menu-complete-display-prefix On
+set skip-completed-text on
