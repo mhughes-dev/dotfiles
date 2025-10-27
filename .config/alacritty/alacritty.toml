@@ -1,0 +1,64 @@
+[general]
+live_config_reload = true
+import = ["~/.config/alacritty/themes/tokyonight_moon.toml"]
+
+[colors]
+draw_bold_text_with_bright_colors = true
+
+[cursor]
+style = "underline"
+
+[env]
+# TERM = "xterm-256color"
+
+[font]
+size = 12.0
+glyph_offset.x = 0
+glyph_offset.y = 0
+#builtin_box_drawing = false
+
+[font.normal]
+# family = "Iosevka Nerd Font"
+# family = "Iosevka Nerd Font Mono"
+family = "IosevkaTerm Nerd Font"
+# family = "IosevkaTerm Nerd Font Mono"
+style = "Regular"
+
+[font.bold]
+# family = "Iosevka Nerd Font"
+# family = "Iosevka Nerd Font Mono"
+family = "IosevkaTerm Nerd Font"
+# family = "IosevkaTerm Nerd Font Mono"
+style = "Bold"
+
+[font.italic]
+# family = "Iosevka Nerd Font"
+# family = "Iosevka Nerd Font Mono"
+family = "IosevkaTerm Nerd Font"
+# family = "IosevkaTerm Nerd Font Mono"
+style = "Italic"
+# style = "Oblique"
+
+[font.bold_italic]
+# family = "Iosevka Nerd Font"
+# family = "Iosevka Nerd Font Mono"
+family = "IosevkaTerm Nerd Font"
+# family = "IosevkaTerm Nerd Font Mono"
+style = "Bold Italic"
+# style = "Bold Oblique"
+
+[window]
+padding.x = 8
+padding.y = 8
+dynamic_padding = true
+decorations = "None"
+
+[keyboard]
+bindings = [
+{ key = "0", mods = "Control", action = "None" },
+{ key = "=", mods = "Control", action = "None" },
+{ key = "+", mods = "Control", action = "None" },
+{ key = "-", mods = "Control", action = "None" },
+{ key = "NumpadAdd", mods = "Control", action = "None" },
+{ key = "NumpadSubtract", mods = "Control", action = "None" },
+]
