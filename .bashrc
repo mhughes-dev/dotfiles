@@ -1,1 +1,5 @@
-.config/bash/bashrc
+#
+# ~/.bashrc
+#
+
+source ~/.config/bash/rc

@@ -1,0 +1,53 @@
+# File system
+alias ls='eza --icons=auto'
+alias ll='ls -l --group-directories-first'
+alias lsa='ll -a'
+alias lsd='ll --only-dirs'
+alias lse='ll --sort extension'
+alias lsr='ll --sort newest'
+alias lss='ll --sort size'
+alias lst='eza --tree --level=2 --long --icons --git'
+
+alias cp='cp -i'
+alias mv='mv -i'
+alias rm='rm -i'
+alias ln='ln -i'
+
+alias cd="zd"
+zd() {
+  if [ $# -eq 0 ]; then
+    builtin cd ~ && return
+  elif [ -d "$1" ]; then
+    builtin cd "$1"
+  else
+    z "$@" && printf "\U000F17A9 " && pwd || echo "Error: Directory not found"
+  fi
+}
+
+# Directories
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+
+# Tools
+alias df='df --human-readable --print-type'
+alias du='df --human-readable --total --max-depth=1'
+alias ff="fzf --preview 'bat --style=numbers --color=always {}'"
+alias ss='ss -plunt'
+alias lsport='lsof -i -n -P'
+
+open() {
+  xdg-open "$@" >/dev/null 2>&1 &
+}
+
+n() { 
+  if [ "$#" -eq 0 ]; then
+    nvim .
+  else
+    nvim "$@"
+  fi
+}
+
+# Git
+alias g='git'
+alias dotfiles='git --git-dir=$HOME/.cfg --work-tree=$HOME'

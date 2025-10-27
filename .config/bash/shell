@@ -1,0 +1,19 @@
+# History control
+shopt -s histappend
+HISTCONTROL=ignoreboth
+HISTSIZE=32768
+HISTFILESIZE="${HISTSIZE}"
+
+# Disable control flow
+stty -ixon
+
+# Control-D twice exits the shell
+export IGNOREEOF=1
+
+# Autocompletion
+if [[ ! -v BASH_COMPLETION_VERSINFO && -f /usr/share/bash-completion/bash_completion ]]; then
+  source /usr/share/bash-completion/bash_completion
+fi
+
+# Set complete path
+export PATH="$HOME/.local/bin:$PATH"
