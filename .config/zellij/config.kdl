@@ -110,6 +110,7 @@ keybinds clear-defaults=true {
             }
             SwitchToMode "normal"
         }
+        bind "m" { ToggleMouseMode; SwitchToMode "normal"; }
         bind "Ctrl o" { SwitchToMode "normal"; }
         bind "p" {
             LaunchOrFocusPlugin "plugin-manager" {
@@ -311,7 +312,6 @@ web_client {
 // Default: "default"
 //
 // default_layout "compact"
-default_layout "compact"
 
 // The folder in which Zellij will look for layouts
 // (Requires restart)
@@ -400,13 +400,13 @@ default_layout "compact"
 // otherwise this will error if such a session exists.
 // Default: <RANDOM>
 //
-session_name "main"
+// session_name "main"
 
 // When `session_name` is provided, attaches to that session
 // if it is already running or creates it otherwise.
 // Default: false
 //
-attach_to_session true
+// attach_to_session true
 
 // Toggle between having Zellij lay out panes according to a predefined set of layouts whenever possible
 // Options:
