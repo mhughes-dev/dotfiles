@@ -534,26 +534,37 @@ bindsym $mod+g mode "spaces"
 #
 # Utilities:
 #
-    # Special keys to adjust volume via PulseAudio
-    bindsym --locked XF86AudioMute exec pactl set-sink-mute \@DEFAULT_SINK@ toggle
-    bindsym --locked XF86AudioLowerVolume exec pactl set-sink-volume \@DEFAULT_SINK@ -5%
-    bindsym --locked XF86AudioRaiseVolume exec pactl set-sink-volume \@DEFAULT_SINK@ +5%
-    bindsym --locked XF86AudioMicMute exec pactl set-source-mute \@DEFAULT_SOURCE@ toggle
+    set $osdclient swayosd-client --monitor "$(scrollmsg -t get_outputs | jq -r '.[] | select(.focused == true).name')"
+    # Keys to adjust volume
+    bindsym --locked XF86AudioRaiseVolume exec $osdclient --output-volume raise
+    bindsym --locked XF86AudioLowerVolume exec $osdclient --output-volume lower
+    bindsym --locked XF86AudioMute exec $osdclient --output-volume mute-toggle
+    bindsym --locked XF86AudioMicMute exec $osdclient --input-volume mute-toggle
 
-    # Special keys to control media via playerctl
-    bindsym --locked XF86AudioPlay exec playerctl play-pause
-    bindsym --locked XF86AudioPause exec playerctl play-pause
-    bindsym --locked XF86AudioPrev exec playerctl previous
-    bindsym --locked XF86AudioNext exec playerctl next
-    bindsym --locked XF86AudioStop exec playerctl stop
+    # Alt modifier for precise volume adjustments
+    bindsym --locked Alt+XF86AudioRaiseVolume exec $osdclient --output-volume +1
+    bindsym --locked Alt+XF86AudioLowerVolume exec $osdclient --output-volume -1
 
-    # Special keys to adjust brightness via brightnessctl
-    bindsym --locked XF86MonBrightnessDown exec brightnessctl set 5%-
-    bindsym --locked XF86MonBrightnessUp exec brightnessctl set 5%+
+    # Keys to control media
+    bindsym --locked XF86AudioPlay exec $osdclient --playerctl play-pause
+    bindsym --locked XF86AudioPause exec $osdclient --playerctl play-pause
+    bindsym --locked XF86AudioPrev exec $osdclient --playerctl previous
+    bindsym --locked XF86AudioNext exec $osdclient --playerctl next
+    bindsym --locked XF86AudioStop exec $osdclient --playerctl stop
 
-    # Special key to take a screenshot
+    # Keys to adjust brightness
+    bindsym --locked XF86MonBrightnessUp $osdclient --brightness raise
+    bindsym --locked XF86MonBrightnessDown $osdclient --brightness lower
+
+    # Alt modifier for precise brightness adjustments
+    bindsym --locked Alt+XF86MonBrightnessUp $osdclient --brightness +1
+    bindsym --locked Alt+XF86MonBrightnessDown $osdclient --brightness -1
+
+    # Keys to take screenshots
     bindsym Print exec cmd-screenshot 
     bindsym Shift+Print exec cmd-screenshot smart clipboard
+
+    # Color picker
     bindsym $mod+Print exec pkill hyprpicker || hyprpicker -a
 
 #
