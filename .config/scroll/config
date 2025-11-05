@@ -13,7 +13,7 @@ set $up Up
 set $right Right
 
 # Terminal emulator
-set $term alacritty
+set $term uwsm-app -- alacritty
 
 # Application launcher
 set $menu walker
@@ -47,7 +47,7 @@ output * bg /home/semilogic/.config/background.png fill
 # your displays after another 300 seconds, and turn your screens back on when
 # resumed. It will also lock your screen before your computer goes to sleep.
 
-exec swayidle -w \
+exec uwsm-app -- swayidle -w \
     timeout 900 'swaylock -f -c 000000' \
     timeout 1200 'scrollmsg "output * power off"' resume 'scrollmsg "output * power on"'
 
@@ -622,24 +622,27 @@ for_window [window_role="pop-up"] floating enable
 #
 
 # Notification
-exec mako
+exec uwsm-app -- mako
+
+# OSD
+exec uwsm-app -- swayosd-server
 
 # Easy Effects
-exec easyeffects --gapplication-service
+exec uwsm-app -- easyeffects --gapplication-service
+
+# Day/night color adjustment
+exec uwsm-app -- wlsunset -l 26.9 -L -80.1
 
 # Elephant
-exec elephant
+exec uwsm-app -- elephant
 
 # Walker
-exec walker --gapplication-service
+exec uwsm-app -- walker --gapplication-service
 
 # Clipboard
-exec wl-clip-persist --clipboard regular --all-mime-type-regex '^(?!x-kde-passwordManagerHint).+'
+exec wl-paste --watch cliphist store
 
 # Polkit
 exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-
-# Move cursor to the first workspace
-exec sleep 1 && scrollmsg "workspace 1"
 
 include /etc/scroll/config.d/*

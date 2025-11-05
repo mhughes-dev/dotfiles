@@ -1,0 +1,16 @@
+# Desktop and WM related variables
+export ELECTRON_OZONE_PLATFORM_HINT=auto
+export ELECTRON_TRASH=trash-cli
+export HUNSPELL_DICTIONARIES="/usr/share/hunspell"
+export NO_AT_BRIDGE=1
+export WINIT_X11_SCALE_FACTOR=1.0
+export XCURSOR_THEME=Adwaita
+export XCURSOR_SIZE=16
+
+export QT_QPA_PLATFORM="wayland;xcb"
+export QT_QPA_PLATFORMTHEME=qt5ct
+export QT_STYLE_OVERRIDE=gtk2
+
+export GDK_BACKEND="wayland,x11"
+export SDL_VIDEODRIVER=wayland
+export CLUTTER_BACKEND=wayland

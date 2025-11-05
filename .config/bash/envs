@@ -2,28 +2,3 @@
 export EDITOR=nvim
 export SUDO_EDITOR="$EDITOR"
 export BAT_THEME=ansi
-
-# Desktop and WM related variables
-# These should be moved to the window manager init files using uwsm
-
-export ELECTRON_OZONE_PLATFORM_HINT=auto
-export ELECTRON_TRASH=trash-cli
-export HUNSPELL_DICTIONARIES="/usr/share/hunspell"
-#export LIBVA_DRIVER_NAME="iHD"
-export NO_AT_BRIDGE=1
-export XCURSOR_THEME=Adwaita
-export XCURSOR_SIZE=16
-
-export QT_QPA_PLATFORM="wayland;xcb"
-export QT_QPA_PLATFORMTHEME=qt5ct
-export QT_STYLE_OVERRIDE=gtk2
-#export QT_WAYLAND_DISABLE_WINDOWDECORATION=1
-#export QT_AUTO_SCREEN_SCALE_FACTOR=1
-
-#export XDG_CURRENT_DESKTOP=scroll
-export GDK_BACKEND="wayland,x11"
-export SDL_VIDEODRIVER=wayland
-export CLUTTER_BACKEND=wayland
-
-# Python
-export PIP_REQUIRE_VIRTUALENV=true
