@@ -1,12 +1,14 @@
-if command -v oh-my-posh &> /dev/null; then
+# vim: filetype=bash
+
+if command -v oh-my-posh &>/dev/null; then
   eval "$(oh-my-posh init bash --config ~/.config/oh-my-posh/tokyonight_moon.omp.json)"
 fi
 
-if command -v zoxide &> /dev/null; then
+if command -v zoxide &>/dev/null; then
   eval "$(zoxide init bash)"
 fi
 
-if command -v fzf &> /dev/null; then
+if command -v fzf &>/dev/null; then
   if [[ -f /usr/share/fzf/completion.bash ]]; then
     source /usr/share/fzf/completion.bash
   fi

@@ -1,28 +1,34 @@
+# vim: filetype=bash
+
 # File system
-alias ls='eza --icons=auto'
-alias ll='ls -l --group-directories-first'
-alias lsa='ll -a'
-alias lsd='ll --only-dirs'
-alias lse='ll --sort extension'
-alias lsr='ll --sort newest'
-alias lss='ll --sort size'
-alias lst='eza --tree --level=2 --long --icons --git'
+if command -v eza &>/dev/null; then
+  alias ls='eza --icons=auto'
+  alias ll='ls -l --group-directories-first'
+  alias lsa='ll -a'
+  alias lsd='ll --only-dirs'
+  alias lse='ll --sort extension'
+  alias lsr='ll --sort newest'
+  alias lss='ll --sort size'
+  alias lst='eza --tree --level=2 --long --icons --git'
+fi
 
 alias cp='cp -i'
 alias mv='mv -i'
 alias rm='rm -i'
 alias ln='ln -i'
 
-alias cd='zd'
-zd() {
-  if [ $# -eq 0 ]; then
-    builtin cd ~ && return
-  elif [ -d "$1" ]; then
-    builtin cd "$1"
-  else
-    z "$@" && printf "\U000F17A9 " && pwd || echo "Error: Directory not found"
-  fi
-}
+if command -v zoxide &>/dev/null; then
+  alias cd='zd'
+  zd() {
+    if [ $# -eq 0 ]; then
+      builtin cd ~ && return
+    elif [ -d "$1" ]; then
+      builtin cd "$1" || exit
+    else
+      z "$@" && printf "\U000F17A9 " && pwd || echo "Error: Directory not found"
+    fi
+  }
+fi
 
 # Directories
 alias ..='cd ..'
@@ -40,7 +46,7 @@ open() {
   xdg-open "$@" >/dev/null 2>&1 &
 }
 
-n() { 
+n() {
   if [ "$#" -eq 0 ]; then
     nvim .
   else
@@ -49,19 +55,21 @@ n() {
 }
 
 # Zellij
-function zr () { zellij run --name "$*" -- bash -ic "$*";}
-function zrf () { zellij run --name "$*" --floating -- bash -ic "$*";}
-function zri () { zellij run --name "$*" --in-place -- bash -ic "$*";}
-function ze () { zellij edit "$*";}
-function zef () { zellij edit --floating "$*";}
-function zei () { zellij edit --in-place "$*";}
-function zpipe () {
-  if [ -z "$1" ]; then
-    zellij pipe;
-  else
-    zellij pipe -p $1;
-  fi
-}
+if command -v zellij &>/dev/null; then
+  function zr() { zellij run --name "$*" -- bash -ic "$*"; }
+  function zrf() { zellij run --name "$*" --floating -- bash -ic "$*"; }
+  function zri() { zellij run --name "$*" --in-place -- bash -ic "$*"; }
+  function ze() { zellij edit "$*"; }
+  function zef() { zellij edit --floating "$*"; }
+  function zei() { zellij edit --in-place "$*"; }
+  function zpipe() {
+    if [ -z "$1" ]; then
+      zellij pipe
+    else
+      zellij pipe -p "$1"
+    fi
+  }
+fi
 
 # Git
 alias g='git'
