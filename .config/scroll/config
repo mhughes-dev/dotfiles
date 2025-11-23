@@ -14,6 +14,7 @@ set $right Right
 
 # Terminal emulator
 set $term uwsm-app -- alacritty
+set $quickterm uwsm-app -- kitten quick-access-terminal
 
 # Application launcher
 set $menu walker
@@ -112,6 +113,9 @@ animations {
 #
     # Start a terminal
     bindsym $mod+Return exec $term
+
+    # Dropdown terminal
+    bindsym Ctrl+grave exec $quickterm
 
     # Kill focused window
     bindsym $mod+Backspace kill
@@ -608,7 +612,7 @@ assign [class="obsidian"] 6
 
 # Floating rules
 for_window [app_id="com.github.wwmm.easyeffects"] floating enable
-for_window [app_id="quick-access-terminal"] border pixel 2
+for_window [app_id="kitty-quick-access"] floating disable
 for_window [app_id="firefox" title="Firefox -- Sharing Indicator"] floating enable
 for_window [app_id="firefox" title="Picture-in-Picture"] floating enable
 for_window [app_id="firefox" title="Pushbullet -- Mozilla Firefox"] floating enable
