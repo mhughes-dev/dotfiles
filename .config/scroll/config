@@ -612,13 +612,12 @@ assign [class="obsidian"] 6
 
 # Floating rules
 for_window [app_id="com.github.wwmm.easyeffects"] floating enable
-for_window [app_id="kitty-quick-access"] floating disable
 for_window [app_id="firefox" title="Firefox -- Sharing Indicator"] floating enable
 for_window [app_id="firefox" title="Picture-in-Picture"] floating enable
 for_window [app_id="firefox" title="Pushbullet -- Mozilla Firefox"] floating enable
 for_window [app_id="firefox" title="About Mozilla Firefox"] floating enable
 for_window [app_id="firefox" title="--- Firefox"] floating enable
-for_window [app_id="mpv"] floating enable
+for_window [app_id="mpv"] floating enable, resize set width 1920 height 1080
 for_window [app_id="thunar" title="^Copying.*"] floating enable
 for_window [app_id="thunar" title="^File.*"] floating enable
 for_window [app_id="org.keepassxc.KeePassXC"] floating enable
