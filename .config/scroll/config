@@ -642,7 +642,7 @@ exec uwsm-app -- mako
 exec uwsm-app -- swayosd-server
 
 # Easy Effects
-exec uwsm-app -- easyeffects --gapplication-service
+exec uwsm-app -- easyeffects --service-mode
 
 # Day/night color adjustment
 exec uwsm-app -- wlsunset -l 26.9 -L -80.1
