@@ -647,9 +647,6 @@ exec uwsm-app -- easyeffects --gapplication-service
 # Day/night color adjustment
 exec uwsm-app -- wlsunset -l 26.9 -L -80.1
 
-# Elephant
-exec uwsm-app -- elephant
-
 # Walker
 exec uwsm-app -- walker --gapplication-service
 
