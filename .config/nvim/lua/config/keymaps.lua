@@ -7,5 +7,10 @@
 -- use `vim.keymap.set` instead
 local map = vim.keymap.set
 
+-- <C-n> and <C-p> are easier to reach
 map({ "n", "x" }, "<C-N>", "<C-D>", { desc = "Scroll Half Page Down" })
 map({ "n", "x" }, "<C-P>", "<C-U>", { desc = "Scroll Half Page Up" })
+
+-- Sentence motions aren't very useful, use the same keys for paragraph motions
+map({ "n", "x" }, ")", "}", { desc = "Next paragraph" })
+map({ "n", "x" }, "(", "{", { desc = "Previous paragraph" })
