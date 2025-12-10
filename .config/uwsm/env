@@ -9,7 +9,7 @@ export XCURSOR_SIZE=16
 
 export QT_QPA_PLATFORM="wayland;xcb"
 export QT_QPA_PLATFORMTHEME=qt5ct
-export QT_STYLE_OVERRIDE=gtk2
+export QT_STYLE_OVERRIDE=qt5ct-style
 
 export GDK_BACKEND="wayland,x11"
 export SDL_VIDEODRIVER=wayland
