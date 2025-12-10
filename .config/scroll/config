@@ -142,7 +142,7 @@ animations {
     # bindsym $mod+Ctrl+c exec killall -SIGUSR2 waybar
 
     # Exit scroll (logs you out of your Wayland session)
-    bindsym $mod+Shift+x exec scrollnag -t warning -m 'You pressed the exit shortcut. Do you really want to exit scroll? This will end your Wayland session.' -B 'Yes, exit scroll' 'scrollmsg exit' -w 500 -e center -y overlay
+    bindsym $mod+Shift+x exec scrollnag -t warning -m 'You pressed the exit shortcut. Do you really want to exit scroll? This will end your Wayland session.' -B 'Yes, exit scroll' 'uwsm stop' -w 500 -e center -y overlay
 
     # Lock the screen
     bindsym Ctrl+Mod1+l exec swaylock -f -c 000000
@@ -600,11 +600,11 @@ workspace 9 output $monitor2
 workspace 10 output $monitor2
 
 # Assign windows to workspaces
-assign [app_id="org.telegram.desktop"] 10
-assign [app_id="discord"] 10
-assign [app_id="signal"] 10
-assign [app_id="Slack"] 6
-assign [class="obsidian"] 6
+# assign [app_id="org.telegram.desktop"] 10
+#assign [app_id="discord"] 10
+#assign [app_id="signal"] 10
+#assign [app_id="Slack"] 6
+#assign [class="obsidian"] 6
 
 #
 # Window rules:
@@ -623,6 +623,7 @@ for_window [app_id="thunar" title="^File.*"] floating enable
 for_window [app_id="org.keepassxc.KeePassXC"] floating enable
 for_window [app_id="re.sonny.Junction"] floating enable
 for_window [app_id="org.pulseaudio.pavucontrol"] floating enable
+for_window [app_id="inkdrop" title="Preferences"] floating enable
 for_window [class="dev.zed.Zed" window_type="notification"] floating enable
 for_window [class="Eddie"] floating enable
 for_window [title="(?:Open|Save) (?:File|Folder|As)"] floating enable, resize set width 1030 height 710
@@ -642,7 +643,7 @@ exec uwsm-app -- mako
 exec uwsm-app -- swayosd-server
 
 # Easy Effects
-exec uwsm-app -- easyeffects --service-mode
+exec uwsm-app -- easyeffects --service-mode --hide-window
 
 # Day/night color adjustment
 exec uwsm-app -- wlsunset -l 26.9 -L -80.1
