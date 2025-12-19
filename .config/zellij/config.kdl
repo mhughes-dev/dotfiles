@@ -661,7 +661,7 @@ themes {
             player_10 0
         }
     }
-    tokyo-night-dark-custom {
+    tokyo-night-night {
         text_unselected {
             base 192 202 245
             background 26 27 38
@@ -785,4 +785,4 @@ themes {
     }
 }
 
-theme "tokyo-night-moon"
+theme "tokyo-night-night"
